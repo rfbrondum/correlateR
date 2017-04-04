@@ -22,7 +22,7 @@ arma::cube rwishartArma(const int n,
                         const arma::mat & sigma, 
                         const double nu) {
   const int p = sigma.n_cols;
-  const arma::mat L = arma::chol(sigma);
+  const arma::mat L = arma::chol(sigma, "lower");
   arma::cube ans(p, p, n);
   for (int k = 0; k < n; ++k) {
     ans.slice(k) = rwishartS(L, nu, p);
